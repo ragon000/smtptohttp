@@ -1,0 +1,9 @@
+smtp:
+  hostname: '127.0.0.1'
+  port: '8025'
+http:
+  payload: "{'message': '%s'}"
+  url: 'https://asdf:443'
+  headers:
+    Authorization: 'asdf'
+    Content-Type: 'application/json'
