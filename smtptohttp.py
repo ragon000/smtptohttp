@@ -34,12 +34,13 @@ class HttpHandler:
         envelope.rcpt_tos.append(address)
         return '250 OK'
     async def handle_DATA(self, server, session, envelope):
-        mess =  "New Mail:\n\n"
+        mess =  "New Mail:\n"
         for ln in envelope.content.decode('utf8', errors='replace').splitlines():
             mess += ln.strip()+'\n'
         print(mess)
         print(self.payload)
         pl = self.payload % mess
+        pl = pl.replace('\n', '\\n')
         print(pl)
         r = requests.post(self.url, data=pl, headers=self.headers)
         print(r.text)
